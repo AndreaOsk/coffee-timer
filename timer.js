@@ -9,24 +9,24 @@ setInterval(updateCountdown, 1000);
 function updateCountdown() {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
+    let displaySeconds = seconds < 10 ? '0' + seconds : seconds;
 
-    seconds = seconds < 10 ? '0' + seconds : seconds;
+    countdownEL.innerHTML = `${minutes}: ${displaySeconds}`;
 
-    countdownEL.innerHTML = `${minutes}: ${seconds}`;
-    time--;
+    time = time -1;
 }
 
 
 //Countdown timer with buttons to stop and reset timer. 
-var myTimerObj = (function(document) {
-    var myTimer; 
+let myTimerObj = (function(document) {
+    let myTimer; 
 
     function start() {
         myTimer = setInterval(myClock, 1000);
-        var c = 5;
+        let c = 5;
 
         function myClock() {
-            document.getElementById('demo').innerHTML = --c;
+            document.getElementById('demo').innerHTML = c -1;
             if (c == 0) {
             clearInterval(myTimer);
             alert('reached zero');
